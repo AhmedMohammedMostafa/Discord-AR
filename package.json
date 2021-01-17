@@ -1,0 +1,40 @@
+{
+  "name": "discord-ar",
+  "version": "1.0.0",
+  "description": "Discord AR",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "bot-list"
+  ],
+  "author": "Discord AR",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "canvacord": "^3.0.5",
+    "canvas": "^2.6.1",
+    "cheerio": "^1.0.0-rc.3",
+    "discord-ytdl-core": "^4.0.0",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "ffmpeg-static": "^4.2.4",
+    "form-data": "^3.0.0",
+    "helmet": "^3.23.1",
+    "is-image-url": "^1.1.8",
+    "moment": "^2.27.0",
+    "moment-duration-format": "^2.3.2",
+    "node-fetch": "^2.6.1",
+    "quick.db": "^7.1.1",
+    "serve-favicon": "^2.5.0",
+    "showdown": "^1.9.1",
+    "turndown": "^6.0.0"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Discord AR">
+    <meta name="og:title" content="Discord AR">
+    <meta name="og:theme-color" content="#FF7851">
+    <meta name="og:description" content="Official Website Of Discord AR">
+    <meta property="og:image" content="https://discordar.xyz/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <meta name="twitter:title" content="Discord AR">
+    <meta name="twitter:theme-color" content="#FF7851">
+    <meta name="twitter:description" content="Official Website Of Discord AR">
+    <meta property="twitter:image" content="https://discordar.xyz/Logo.png">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <title>Discord AR</title>
+</head>
+
+<body onload="emojify()">
+
+    <div class="container">
+        <%- include("./part/nav.ejs") %>
+
+         
+        <div class="overlay"></div>
+        <div class="text">
+          <h2>Discord AR</h2>
+          <h3>faster, easier, better.</h3>
+          <p>Arabic discord technical support server, Here we have no relationship with the Discord Administration in any way .</p>
+          <a href="/discord">Join Now</a>
+        </div>
+<br>
+        <hr>
+        <br>
+<div id="counter-stats" class="wow fadeInRight" data-wow-duration="1.4s">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-3 stats">
+				<i class="fa fa-users" aria-hidden="true"></i>
+				<div class="counting" data-count="<%=bot.guilds.cache.get(bot.config.guilds.main).memberCount %>">0</div>
+				<h5>Users</h5>
+			</div>
+
+			<div class="col-lg-3 stats">
+				<i class="fa fa-robot" aria-hidden="true"></i>
+				<div class="counting" data-count="<%= botl %>">0</div>
+				<h5>Listed Bots</h5>
+			</div>
+
+			<div class="col-lg-3 stats">
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<div class="counting" data-count="<%= bot.guilds.cache.get(bot.config.guilds.main).members.cache.filter(member => member.presence.status == `offline`).size %>">0</div>
+				<h5>Online Users</h5>
+			</div>
+
+			<div class="col-lg-3 stats">
+        <i class="fa fa-gem" aria-hidden="true"></i>
+				<div class="counting" data-count="<%= bot.guilds.cache.get(bot.config.guilds.main).premiumSubscriptionCount %>">0</div>
+				<h5>Boosts</h5>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<br>
+<hr>
+<br>
+      <center>
+        <div class="team-section">
+          <div class="inner-width">
+            <h2>Discord AR Founders.</h2>
+            <div class="pers">
+
+              <div class="pe">
+                <img src="<%= bot.users.cache.get(bot.config.owners.ra3d).displayAvatarURL({dynamic : true}) %>" alt="rafeh">
+                <h2 class="p-name"><%= bot.users.cache.get(bot.config.owners.ra3d).tag || 'Discord Name' %></h2>
+              </div>
+      
+              <div class="pe">
+                <img src="<%= bot.users.cache.get(bot.config.owners.parda).displayAvatarURL({dynamic : true}) %>" alt="rafeh">
+                <h2 class="p-name"><%= bot.users.cache.get(bot.config.owners.parda).tag || 'Discord Name' %></h2>
+              </div>
+      
+          
+            </div>
+          </div>
+        </div>
+
+      </center>
+        <%- include("./part/footer.ejs") %>
+    </div>
+    <script>
+// number count for stats, using jQuery animate
+
+$('.counting').each(function() {
+  var $this = $(this),
+      countTo = $this.attr('data-count');
+  
+  $({ countNum: $this.text()}).animate({
+    countNum: countTo
+  },
+
+  {
+
+    duration: 3000,
+    easing:'linear',
+    step: function() {
+      $this.text(Math.floor(this.countNum));
+    },
+    complete: function() {
+      $this.text(this.countNum);
+      //alert('finished');
+    }
+
+  });  
+  
+
+});
+
+
+</script>
+
+</body>
+
+</html>

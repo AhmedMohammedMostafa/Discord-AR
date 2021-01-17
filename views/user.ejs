@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Discord AR">
+    <meta name="og:title" content="<%= mem.tag %>">
+    <meta name="og:theme-color" content="#FF7851">
+    <meta name="og:description" content="<%= bot.db.get(`bio_${mem.id}`) || "This is a mysterious user." %>">
+    <meta property="og:image" content="<%= mem.displayAvatarURL() %>">
+
+    <meta name="twitter:title" content="<%= mem.tag %>">
+    <meta name="twitter:theme-color" content="#FF7851">
+    <meta name="twitter:description" content="<%= bot.db.get(`bio_${mem.id}`) || "This is a mysterious user." %>">
+    <meta property="twitter:image" content="<%= mem.displayAvatarURL() %>">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+<script src="/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <title><%= mem.tag %></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+<style type="text/css">
+h2 {
+    text-align: left;
+    margin-left: 20px;
+    font-size: 30px;
+
+}
+
+
+.details {
+    text-align: left;
+}
+.about-div {
+    margin-left: 30px;
+
+}
+.about-title {
+    font-size: 20px;
+
+}
+
+.about-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* . */
+
+.job-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.job-title {
+    font-size: 20px;
+
+}
+
+.job-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* . */
+
+.gender-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.gender-title {
+    font-size: 20px;
+
+}
+
+.gender-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* . */
+
+.location-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.location-title {
+    font-size: 20px;
+
+}
+
+.location-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* . */
+
+.email-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.email-title {
+    font-size: 20px;
+
+}
+
+.email-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* Connections */
+/* . */
+
+.youtube-div {
+margin-left: 25px;
+width: 20%;
+height: 41px;
+background-color: #343A40;
+margin-bottom: 10px;
+margin-top: 10px;
+border-radius: 5px;
+text-align: center;
+align-content:center;
+}  
+
+.youtube-div:hover {
+    font-size: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+} 
+
+ 
+.youtube-title {
+    font-size: auto;
+    text-decoration: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-wrap:wrap;
+}  
+
+.badges {
+    margin-left: 25px;
+}
+
+.align-name {
+    margin-left: 10px;
+}
+.align-premium {
+    margin-left: 25px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+
+
+}
+
+.premium {
+    margin-left: 35px;
+}
+.premium-text {
+    color: #FFD700;
+}
+ .statusBox {
+     border-radius: 30px;
+     margin-top: -20px;
+     width: 1000; 
+     height: 120px;
+     background-color: #343A40;
+ }
+ .statusBox img {
+   margin-left: 10px;
+   margin-top: 10px;
+   border-radius: 20px;
+   width: 100px; 
+     height: 100px;
+ }
+ .statusBox h1 {
+   margin-left: 40px;
+   font-size: 30px;
+ }
+
+ .heart-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+ }
+
+ .heart-button:focus {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+ }
+
+
+
+ .fas {
+   color: #ffffffff;
+ }
+
+ .move-h {
+     margin-left: 20px;
+ }
+
+ .text-gray {
+     color:#9fa6b2;
+ }
+</style>
+<script>
+
+    (function()
+    {
+        var defaultOptions = {
+            ele: "body",
+            type: "info",
+            offset:
+            {
+                from: "top",
+                amount: 20
+            },
+            align: "right",
+            width: 250,
+            delay: 4000,
+            allow_dismiss: true,
+            stackup_spacing: 10
+        };
+    
+        $.simplyToast = function(type, message, options)
+        {
+            var $alert, css, offsetAmount;
+    
+            options = $.extend({}, defaultOptions, options);
+    
+            $alert = $('<div class="simply-toast alert alert-' + type + '"></div>');
+    
+            if (options.allow_dismiss)
+            {
+                $alert.append("<span class=\"close\" data-dismiss=\"alert\">&times;</span>");
+            }
+    
+            $alert.append(message);
+    
+            if (options.top_offset)
+            {
+                options.offset = {
+                    from: "top",
+                    amount: options.top_offset
+                };
+            }
+            
+            offsetAmount = options.offset.amount;
+            $(".simply-toast").each(function()
+            {
+                return offsetAmount = Math.max(offsetAmount, parseInt($(this).css(options.offset.from)) + $(this).outerHeight() + options.stackup_spacing);
+            });
+    
+            css = {
+                "position": (options.ele === "body" ? "fixed" : "absolute"),
+                "margin": 0,
+                "z-index": "9999",
+                "display": "none"
+            };
+    
+            css[options.offset.from] = offsetAmount + "px";
+    
+            $alert.css(css);
+            
+            if (options.width !== "auto")
+            {
+                $alert.css("width", options.width + "px");
+            }
+    
+            $(options.ele).append($alert);
+    
+            switch (options.align)
+            {
+                case "center":
+                    $alert.css(
+                    {
+                        "left": "50%",
+                        "margin-left": "-" + ($alert.outerWidth() / 2) + "px"
+                    });
+                    break;
+                case "left":
+                    $alert.css("left", "20px");
+                    break;
+                default:
+                    $alert.css("right", "20px");
+            }
+            
+            $alert.fadeIn();
+    
+            function removeAlert()
+            {
+                $alert.fadeOut(function()
+                {
+                    return $alert.remove();
+                });
+            }
+    
+            if (options.delay > 0)
+            {
+                setTimeout(removeAlert, options.delay);
+            }
+    
+            $alert.find("[data-dismiss=\"alert\"]").click(removeAlert);
+    
+            return $alert;
+        };
+    })();
+    
+    </script>
+</head>
+
+<body onload="onReady()">
+    <div class="container">
+     
+        <%- include("./part/nav.ejs") %>
+
+        </div> 
+        <div data-v-4c22b934="">
+            <div data-v-4ac21346="" data-v-4c22b934="">
+               <div data-v-4ac21346="" class="flex items-center">
+                  <div data-v-4ac21346="" class="container px-2 py-4 mobile:w-full md:w-full lg:w-7/12 xl:w- mx-auto my-auto text-white">
+                     <div data-v-49d9514b="" data-v-4ac21346="" class="ProfileCard">
+                        <div data-v-49d9514b="" class="flex flex-col container relative">
+                           <div data-v-49d9514b="" class="absolute ml-6 profile-image" style="margin-top: 5.5rem; height: 6.5rem; width: 6.5rem;">
+                              <img data-v-49d9514b="" draggable="false" src="<%= mem.displayAvatarURL({dynamic : true}) %>" class="rounded-full shadow-md w-full"><!---->
+                           </div>
+                           <% if (bot.booster.has(mem.id)) { %>                       
+                         <% if(bannerURL) { %> 
+                            <div data-v-49d9514b="" class="banner rounded-t-lg bg-purple-900"><img data-v-49d9514b="" src="<%= bannerURL %>" class="w-full h-full" style="object-fit: cover;"></div>
+                             <% } %>
+                             <% } %>
+                             <div data-v-49d9514b="" class="banner rounded-t-lg bg-purple-900"></div>
+                             
+                           <div data-v-49d9514b="" class="flex flex-row absolute right-0 mr-5 move-h" style="margin-top: 10.6rem;">
+                            <button class="heart-button" onclick="likeUser();">
+                                <i id='likeHeart' class="fas fa-heart fa-2x"></i>
+                            </button>
+                            <p style="margin-top: 10px;" id="likeSize" ><%= bot.db.get(`user_${mem.id}.likes`) || '0' %></p>
+                           </div>
+                           <div data-v-49d9514b="" class="bg-card rounded-b-lg pt-16">
+                              <br>
+                              <br>
+    <br>
+   <div class="row align-name">                           
+<h2>
+<%= mem.username %>
+</h2>
+<h3 class="text-gray">#<%= mem.discriminator %></h3>
+<% if (bot.booster.has(mem.id)) { %>
+    <i style="margin-top: 0px; margin-left: 5px; color:gold;" width="42" height="32" class="fad fa-diamond fa-2x"></i>
+    <% } %>
+                <% if (bot.db.get(`verified_${mem.id}`)) { %>
+                    <i style="margin-top: 0px; margin-left: 5px; color:#3f83f8;" width="42" height="32" class="fad fa-badge-check fa-2x"></i>
+<% } %>
+<% if (bot.admins.has(mem.id)) { %>
+    <i style="margin-top: 0px; margin-left: 5px; color: grey;" width="42" height="32" class="fad fa-gavel fa-2x"></i>
+    <% } %>
+</div>
+<% if (bot.booster.has(mem.id)) { %>
+<div class="align-premium">
+<h4 style="margin-left: 15px; font-size:15px; color:gold; margin: 5px">Premium</h4>
+</div>
+<% } %>
+<div class="badges row">
+    <% flags.forEach(badge => { %>
+        <img style="margin:3px;" width="42" height="42" src="<%= badge.url %>">
+        <%  }) %>         
+</div>
+<br>
+<div class="details">
+    <div style="margin-left:1px;" class="row">
+
+        <div class="about-div">
+            <h3 class="about-title"><i class="fad fa-id-card"></i> About</h3>
+            <p class="about-description"><%= bot.db.get(`mem_${mem.id}.bio`) || 'No Bio' %></p>
+           </div>
+
+           <% if(customStatus) { %>
+            <div class="about-div">
+                <h3 class="about-title"><i class="fab fa-discord"></i> Custom Status</h3>
+                <p class="about-description"><%= customStatus.state %></p>
+               </div>
+        <% } %>
+  
+           </div>
+           <div class="row">
+
+            <%  if( bot.db.get(`mem_${mem.id}.email`)) {%> 
+                
+                <div class="gender-div">
+                    <h3 class="gender-title"><i class="fad fa-envelope-open"></i> Email</h3>
+                    <a href="mailto: <%= bot.db.get(`mem_${mem.id}.email`) || 'noemail@gmail.com' %>">
+                        <p class="gender-description"><%= bot.db.get(`mem_${mem.id}.email`) %></p>
+                    </a>
+                   </div>
+                <%} %>
+  
+               <% if( bot.db.get(`mem_${mem.id}.job`)) {%> 
+
+           <div class="job-div">
+            <h3 class="job-title"><i class="fad fa-briefcase"></i> Job</h3>
+            <p class="job-description"><%= bot.db.get(`mem_${mem.id}.job`) %></p>
+           </div>                 
+<% } %>
+
+<% if( bot.db.get(`mem_${mem.id}.gender`)) {%> 
+                <div class="gender-div">
+            <h3 class="gender-title"><i class="fad fa-venus-mars"></i> Gender</h3>
+            <p class="gender-description"><%=bot.db.get(`mem_${mem.id}.gender`)%></p>
+           </div>
+<%} %>
+<%  if( bot.db.get(`mem_${mem.id}.gender`)) {%> 
+
+           <div class="gender-div">
+            <h3 class="gender-title"><i class="fad fa-map-marker-alt"></i> Location</h3>
+            <p class="gender-description"><%=bot.db.get(`mem_${mem.id}.location`)%></p>
+           </div>
+           <%}%>
+
+           </div>
+                              <div data-v-49d9514b="" class="text-white py-1 bg-morenotdark rounded-b-lg font-medium">
+                                <div data-v-49d9514b="" class="text-gray-500 text-md text-center py-4"> Connections COMING SOON </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!---->
+               </div>
+            </div>
+         </div>
+        <%- include("./part/footer.ejs") %>
+    </div>
+</body>
+<script type="text/javascript">
+
+
+function checkLike() {
+    $.ajax({ 
+           url: '/checklike',
+           type: 'POST',
+           data: { user: "<%= mem.id %>" }, 
+           success: function(data){
+              if(data.checked !== false) {
+                const element = document.getElementById('likeHeart')
+    element.style.color = 'red'
+              } else {
+                const element = document.getElementById('likeHeart')
+    element.style.color = 'white'
+              }
+           }
+
+        })
+}
+
+
+
+function onReady() {
+    checkLike()
+}
+
+ function likeUser() {
+    $.ajax({ 
+           url: '/like',
+           type: 'POST',
+           data: { user: "<%= mem.id %>" }, 
+           success: function(data){
+              if(data.checked !== false) {
+                const element = document.getElementById('likeHeart')
+    element.style.color = 'red'
+    $.simplyToast('success','Liked User!');
+    if(!data.likes) {
+        data.likes = '0'
+    }
+    document.getElementById('likeSize').innerHTML = data.likes
+              } else {
+                const element = document.getElementById('likeHeart')
+    element.style.color = 'white'
+    $.simplyToast('danger','Unliked User!');
+    if(!data.likes) {
+        data.likes = '0'
+    }
+     document.getElementById('likeSize').innerHTML = data.likes
+    
+              }
+           }
+        })
+}
+
+
+
+</script>
+
+</html>

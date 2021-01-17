@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Discord AR">
+    <meta name="og:title" content="Discord AR">
+    <meta name="og:theme-color" content="#FF7851">
+    <meta name="og:description" content="Official Website Of Discord AR">
+    <meta property="og:image" content="https://discordar.xyz/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <meta name="twitter:title" content="Discord AR">
+    <meta name="twitter:theme-color" content="#FF7851">
+    <meta name="twitter:description" content="Official Website Of Discord AR">
+    <meta property="twitter:image" content="https://discordar.xyz/Logo.png">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <title>Discord AR</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<script src="/script.js"></script>
+<script>
+
+    (function()
+    {
+        var defaultOptions = {
+            ele: "body",
+            type: "info",
+            offset:
+            {
+                from: "top",
+                amount: 20
+            },
+            align: "right",
+            width: 250,
+            delay: 4000,
+            allow_dismiss: true,
+            stackup_spacing: 10
+        };
+
+        $.simplyToast = function(type, message, options)
+        {
+            var $alert, css, offsetAmount;
+
+            options = $.extend({}, defaultOptions, options);
+
+            $alert = $('<div class="simply-toast alert alert-' + type + '"></div>');
+
+            if (options.allow_dismiss)
+            {
+                $alert.append("<span class=\"close\" data-dismiss=\"alert\">&times;</span>");
+            }
+
+            $alert.append(message);
+
+            if (options.top_offset)
+            {
+                options.offset = {
+                    from: "top",
+                    amount: options.top_offset
+                };
+            }
+
+            offsetAmount = options.offset.amount;
+            $(".simply-toast").each(function()
+            {
+                return offsetAmount = Math.max(offsetAmount, parseInt($(this).css(options.offset.from)) + $(this).outerHeight() + options.stackup_spacing);
+            });
+
+            css = {
+                "position": (options.ele === "body" ? "fixed" : "absolute"),
+                "margin": 0,
+                "z-index": "9999",
+                "display": "none"
+            };
+
+            css[options.offset.from] = offsetAmount + "px";
+
+            $alert.css(css);
+
+            if (options.width !== "auto")
+            {
+                $alert.css("width", options.width + "px");
+            }
+
+            $(options.ele).append($alert);
+
+            switch (options.align)
+            {
+                case "center":
+                    $alert.css(
+                    {
+                        "left": "50%",
+                        "margin-left": "-" + ($alert.outerWidth() / 2) + "px"
+                    });
+                    break;
+                case "left":
+                    $alert.css("left", "20px");
+                    break;
+                default:
+                    $alert.css("right", "20px");
+            }
+
+            $alert.fadeIn();
+
+            function removeAlert()
+            {
+                $alert.fadeOut(function()
+                {
+                    return $alert.remove();
+                });
+            }
+
+            if (options.delay > 0)
+            {
+                setTimeout(removeAlert, options.delay);
+            }
+
+            $alert.find("[data-dismiss=\"alert\"]").click(removeAlert);
+
+            return $alert;
+        };
+    })();
+
+    </script>
+</head>
+
+<body onload="emojify()">
+
+    <div class="container">
+        <%- include("../part/nav.ejs") %>
+    
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+        <center>
+
+                <div class="form-group">
+                    <input type="text" placeholder="Place User ID" class="form-control" id="userid" name="userid" required>
+                </div>
+                 <button type="submit" onclick="searchUser()" class="ml-3 btn btn-outline-info rounded">Search</button>
+
+
+    </center>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <center>
+        <% if(featured) { %>
+            <h2 style="color: gold;">- Featured Users</h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div style="justify-content: center;" class="row">
+    <% featured.forEach(tb => { %>
+        <% if(!bot.users.cache.get(tb.id)) return; %>
+        <div class="col-sm-3 mb-4">
+            <div class="card bg-dark rounded text-white">
+                <img src="<%= bot.users.cache.get(tb.id).displayAvatarURL({dynamic : true}) %>" alt="image" class="card-imge" draggable="false">
+                <h5 class="card-title"><%= bot.users.cache.get(tb.id).tag %>    -   <i id='likeHeart' class="fas fa-heart"></i>  <%= bot.db.fetch(`user_${tb.id}.likes`) || '0' %>   </h5>
+                <p class="card-text"><%= bot.db.fetch(`user_${tb.id}.bio`) || ' ' %></p>
+                <p class="card-text"><i id='likeHeart' class="fas fa-heart fa-2x"></i> <%= bot.db.fetch(`user_${tb.id}.likes`) || '0' %></p>
+                    <a href="/p/<%= tb.id %>" class="btn btn-success rounded">View</a>
+                </div>
+        </div>
+        <br>
+        <% }) %>
+    </div>
+
+            <% } %>
+
+            <% if(all) { %>      
+        <br>
+        <h2>- Users</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+<div style="justify-content: center;"class="row">
+    <% all.forEach(tb => { %>
+        <% if(!bot.users.cache.get(tb.id)) return; %>
+        <div class="col-sm-3 mb-4">
+            <div class="card bg-dark rounded text-white">
+                <img src="<%= bot.users.cache.get(tb.id).displayAvatarURL({dynamic : true}) %>" alt="image" class="card-imge" draggable="false">
+                <h5 class="card-title"><%= bot.users.cache.get(tb.id).tag %>    -   <i id='likeHeart' class="fas fa-heart"></i>  <%= bot.db.fetch(`user_${tb.id}.likes`) || '0' %>   </h5>
+                <p class="card-text"><%= bot.db.fetch(`user_${tb.id}.bio`) || ' ' %></p>
+                
+                    <a href="/p/<%= tb.id %>" class="btn btn-success rounded">View</a>
+                </div>
+        </div>
+        <br>
+        <% }) %>
+</div>
+<% } %>
+    </center>
+
+        <%- include("../part/footer.ejs") %>
+</body>
+<script>
+
+    async function searchUser() {
+        const id = document.getElementById('userid').value;
+        if(!id) {
+           return $.simplyToast('danger','Invaild ID');
+        }
+        window.location.replace(`https://discordar.xyz/p/${id}`);
+    }
+
+
+</script>
+
+</html>

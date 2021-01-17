@@ -1,0 +1,26 @@
+    <div class="footer-copyright text-center py-3">
+        <h5>© <%= new Date().getFullYear() %> Copyright Discord AR</h5>
+    </div>
+<!-- SCRIPTS -->
+<script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", (e) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+    });
+    function emojify() {
+        twemoji.size = '36x36';
+        twemoji.parse(document.body, {
+            callback: function (icon, options, variant) {
+                switch (icon) {
+                    case 'a9':
+                    case 'ae':
+                    case '2122':
+                        return false;
+                }
+                return ''.concat(options.base, options.size, '/', icon, options.ext);
+            }
+        });
+    }
+</script>

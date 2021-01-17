@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Discord AR">
+    <meta name="og:title" content="<%= user.tag %>">
+    <meta name="og:theme-color" content="#FF7851">
+    <meta name="og:description" content="<%= bot.db.get(`user_${user.id}.bio`) || "No Bio" %>">
+
+    <meta name="twitter:title" content="<%= user.tag %>">
+    <meta name="twitter:theme-color" content="#FF7851">
+    <meta name="twitter:description" content="<%= bot.db.get(`bio_${user.id}`) || "This is a mysterious user." %>">
+    <meta property="twitter:image" content="<%= user.displayAvatarURL() %>">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+<script src="/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <title><%= user.tag %></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<style type="text/css">
+h2 {
+    text-align: left;
+    margin-left: 20px;
+    font-size: 30px;
+
+}
+
+input {
+    background-color: Transparent;
+    outline: none;
+    border: none;
+}
+
+
+.details {
+    text-align: left;
+}
+.about-div {
+    margin-left: 30px;
+}
+.about-title {
+    font-size: 20px;
+
+}
+
+.about-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+    width: 1000px;
+
+}
+/* . */
+
+.job-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.job-title {
+    font-size: 20px;
+
+}
+
+.job-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* . */
+
+.gender-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.gender-title {
+    font-size: 20px;
+
+}
+
+.gender-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* . */
+
+.location-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.location-title {
+    font-size: 20px;
+
+}
+
+.location-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* . */
+
+.email-div {
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+.email-title {
+    font-size: 20px;
+
+}
+
+.email-description {
+    font-size: 15px;
+    margin-top: -10px;
+    color: #d2d6dc;
+}
+/* Connections */
+/* . */
+
+.youtube-div {
+margin-left: 25px;
+width: 20%;
+height: 41px;
+background-color: #343A40;
+margin-bottom: 10px;
+margin-top: 10px;
+border-radius: 5px;
+text-align: center;
+align-content:center;
+}  
+
+.youtube-div:hover {
+    font-size: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+} 
+
+ 
+.youtube-title {
+    font-size: auto;
+    text-decoration: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-wrap:wrap;
+}  
+
+.badges {
+    margin-left: 25px;
+}
+
+.align-name {
+    margin-left: 10px;
+}
+.align-premium {
+    margin-left: 25px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+
+
+}
+
+.premium {
+    margin-left: 35px;
+}
+.premium-text {
+    color: #FFD700;
+}
+ .statusBox {
+     border-radius: 30px;
+     margin-top: -20px;
+     width: 1000; 
+     height: 120px;
+     background-color: #343A40;
+ }
+ .statusBox img {
+   margin-left: 10px;
+   margin-top: 10px;
+   border-radius: 20px;
+   width: 100px; 
+     height: 100px;
+ }
+ .statusBox h1 {
+   margin-left: 40px;
+   font-size: 30px;
+ }
+
+ .heart-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+ }
+
+ .heart-button:focus {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+ }
+
+
+
+ .fas {
+   color: #ffffffff;
+ }
+
+ .move-h {
+     margin-left: 20px;
+ }
+
+ .text-gray {
+     color:#9fa6b2;
+ }
+</style>
+   
+<script>
+
+    (function()
+    {
+        var defaultOptions = {
+            ele: "body",
+            type: "info",
+            offset:
+            {
+                from: "top",
+                amount: 20
+            },
+            align: "right",
+            width: 250,
+            delay: 4000,
+            allow_dismiss: true,
+            stackup_spacing: 10
+        };
+    
+        $.simplyToast = function(type, message, options)
+        {
+            var $alert, css, offsetAmount;
+    
+            options = $.extend({}, defaultOptions, options);
+    
+            $alert = $('<div class="simply-toast alert alert-' + type + '"></div>');
+    
+            if (options.allow_dismiss)
+            {
+                $alert.append("<span class=\"close\" data-dismiss=\"alert\">&times;</span>");
+            }
+    
+            $alert.append(message);
+    
+            if (options.top_offset)
+            {
+                options.offset = {
+                    from: "top",
+                    amount: options.top_offset
+                };
+            }
+            
+            offsetAmount = options.offset.amount;
+            $(".simply-toast").each(function()
+            {
+                return offsetAmount = Math.max(offsetAmount, parseInt($(this).css(options.offset.from)) + $(this).outerHeight() + options.stackup_spacing);
+            });
+    
+            css = {
+                "position": (options.ele === "body" ? "fixed" : "absolute"),
+                "margin": 0,
+                "z-index": "9999",
+                "display": "none"
+            };
+    
+            css[options.offset.from] = offsetAmount + "px";
+    
+            $alert.css(css);
+            
+            if (options.width !== "auto")
+            {
+                $alert.css("width", options.width + "px");
+            }
+    
+            $(options.ele).append($alert);
+    
+            switch (options.align)
+            {
+                case "center":
+                    $alert.css(
+                    {
+                        "left": "50%",
+                        "margin-left": "-" + ($alert.outerWidth() / 2) + "px"
+                    });
+                    break;
+                case "left":
+                    $alert.css("left", "20px");
+                    break;
+                default:
+                    $alert.css("right", "20px");
+            }
+            
+            $alert.fadeIn();
+    
+            function removeAlert()
+            {
+                $alert.fadeOut(function()
+                {
+                    return $alert.remove();
+                });
+            }
+    
+            if (options.delay > 0)
+            {
+                setTimeout(removeAlert, options.delay);
+            }
+    
+            $alert.find("[data-dismiss=\"alert\"]").click(removeAlert);
+    
+            return $alert;
+        };
+    })();
+    
+    </script>
+</head>
+
+<body>
+    <div class="container">
+     
+        <%- include("../part/nav.ejs") %>
+
+        </div> 
+        <div data-v-4c22b934="">
+            <div data-v-4ac21346="" data-v-4c22b934="">
+               <div data-v-4ac21346="" class="flex items-center">
+                  <div data-v-4ac21346="" class="container px-2 py-4 mobile:w-full md:w-full lg:w-7/12 xl:w- mx-auto my-auto text-white">
+                     <div data-v-49d9514b="" data-v-4ac21346="" class="ProfileCard">
+                        <div data-v-49d9514b="" class="flex flex-col container relative">
+                           <div data-v-49d9514b="" class="absolute ml-6 profile-image" style="margin-top: 5.5rem; height: 6.5rem; width: 6.5rem;">
+                              <img data-v-49d9514b="" draggable="false" src="<%= user.displayAvatarURL({dynamic : true}) %>" class="rounded-full shadow-md w-full"><!---->
+                           </div>
+                           <% if (bot.booster.has(user.id)) { %>                       
+                         <% if(bannerURL) { %> 
+                            <div data-v-49d9514b="" class="banner rounded-t-lg bg-purple-900"><img data-v-49d9514b="" src="<%= bannerURL %>" class="w-full h-full" style="object-fit: cover;"></div>
+                             <% } %>
+                             <% } %>
+                             <div data-v-49d9514b="" class="banner rounded-t-lg bg-purple-900"></div>
+                             
+                           <div data-v-49d9514b="" class="flex flex-row absolute right-0 mr-5 move-h" style="margin-top: 10.6rem;">
+                    
+                           </div>
+                           <div data-v-49d9514b="" class="bg-card rounded-b-lg pt-16">
+                              <br>
+                              <br>
+    <br>
+   <div class="row align-name">                           
+<h2>
+<%= user.username %>
+</h2>
+<h3 class="text-gray">#<%= user.discriminator %></h3>
+<% if (bot.booster.has(user.id)) { %>
+    <i style="margin-top: 0px; margin-left: 5px; color:gold;" width="42" height="32" class="fad fa-diamond fa-2x"></i>
+    <% } %>
+                <% if (bot.db.get(`user_${user.id}.verified`)) { %>
+                    <i style="margin-top: 0px; margin-left: 5px; color:#3f83f8;" width="42" height="32" class="fad fa-badge-check fa-2x"></i>
+<% } %>
+<% if (bot.admins.has(user.id)) { %>
+    <i style="margin-top: 0px; margin-left: 5px; color: grey;" width="42" height="32" class="fad fa-gavel fa-2x"></i>
+    <% } %>
+</div>
+
+<% if (bot.booster.has(user.id)) { %>
+    <div class="align-premium">
+    <h4 style="margin-left: 15px; font-size:15px; color:gold; margin: 5px">Premium</h4>
+    </div>
+    <% } %>
+
+<div class="badges row">
+    <% flags.forEach(badge => { %>
+        <img style="margin:3px;" width="42" height="32" src="<%= badge.url %>">
+        <%  }) %>         
+</div>
+<br>
+<div class="details">
+    <div style="margin-left:1px;" class="row">
+<form id="form">
+
+                           <div class="about-div">
+                            <h3 class="about-title"><i class="fad fa-id-card"></i> About</h3>
+                            <input name="about" placeholder="This Is My Bio" max="200" type="text" value="<%=bot.db.get(`user_${user.id}.bio`) || '' %>" class="about-description">
+                           </div>
+                        
+                  
+                           </div>
+                        <br>
+                           <div class="row">
+
+                            
+                           <div class="gender-div">
+                            <h3 class="gender-title"><i class="fad fa-envelope-open"></i> Email</h3>
+                                <input name="email" placeholder="Your Email" type="email" value="<%=bot.db.get(`user_${user.id}.email`) || '' %>" class="gender-description">
+                           </div>
+
+                           <div class="job-div">
+                            <h3 class="job-title"><i class="fad fa-briefcase"></i> Job</h3>
+                            <input name="job" placeholder="Your Job" value="<%=bot.db.get(`user_${user.id}.job`) || '' %>" class="job-description">
+                           </div>                 
+
+                                <div class="gender-div">
+                            <h3 class="gender-title"><i class="fad fa-venus-mars"></i> Gender</h3>
+                            <input name="gender" placeholder="Your Gender" value="<%=bot.db.get(`user_${user.id}.gender`) || '' %>" class="gender-description">
+                           </div>
+
+
+                           <div class="location-div">
+                            <h3 class="location-title"><i class="fad fa-map-marker-alt"></i> Location</h3>
+                            <input name="location" placeholder="Your Location" value="<%=bot.db.get(`user_${user.id}.location`) || '' %>" class="location-description">
+                           </div>
+
+
+                        </div>
+                    </div>
+<br>
+                              <div data-v-49d9514b="" class="text-white py-1 bg-morenotdark rounded-b-lg font-medium">
+                                <button type="submit" style="width: 100%; height: 10%; background-color: Transparent;outline: none;border:none; text-align: center; font-size: 30px; color: #ffffff;">Create Profile</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                </form>
+
+                  <!---->
+               </div>
+            </div>
+         </div>
+         
+        <%- include("../part/footer.ejs") %>
+    </div>
+</body>
+<script type="text/javascript">
+
+const $form = $('#form')
+
+$form.on('submit', submitHandler)
+
+function submitHandler (e) {
+  e.preventDefault()
+
+  $.ajax({
+    url: '/create',
+    type:'POST',
+    data: $form.serialize(),
+    success: function(data) {
+        if(data.status == 200) {
+            $.simplyToast('success','Created Profile Successfully!');
+
+        } else {
+            $.simplyToast('danger','Something Went Wrong Contact An Admin!');
+ 
+        }
+    }
+  })
+
+}
+</script>
+
+</html>

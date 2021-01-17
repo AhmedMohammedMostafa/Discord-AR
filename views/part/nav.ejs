@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark ">
+    <a class="navbar-brand" href="/">
+        <img draggable="false" src="/Logo.png" width="50" height="50" alt="img" loading="lazy" style="border-radius: 50%;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bots">Bots</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bio">Bio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/discord">Discord</a>
+            </li>
+    
+            <% if (user) { %>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><%= user.tag %></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <% if(haveBio) { %> 
+                        <a class="dropdown-item" href="/me">Profile</a>
+                        <a class="dropdown-item" href="/me/edit">Edit Profile</a>
+                    <% } else { %> 
+                        <a class="dropdown-item" href="/me/create">Create Profile</a>
+                    <% } %>
+                    <a class="dropdown-item" href="/bots/new">Add Bot</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/authorize/logout">Logout</a>
+                </div>
+            </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/authorize">Login</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
