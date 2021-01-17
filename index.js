@@ -154,6 +154,6 @@ Array.prototype.shuffle = function () {
 
 setInterval(function () { 
     let guild = client.guilds.cache.get('766748088018141214');
-    client.booster = guild.members.cache.filter(member => member.roles.cache.get('766759696714432558') || member.roles.cache.get('766759697088512000'))
+    client.booster = guild.members.cache.filter(member => member.roles.cache.get(client.config.roles.booster) || member.roles.cache.get(client.config.roles.premium))
 }, 10000)
 

@@ -246,13 +246,15 @@ align-content:center;
                            <div data-v-49d9514b="" class="absolute ml-6 profile-image" style="margin-top: 5.5rem; height: 6.5rem; width: 6.5rem;">
                               <img data-v-49d9514b="" draggable="false" src="<%= user.displayAvatarURL({dynamic : true}) %>" class="rounded-full shadow-md w-full"><!---->
                            </div>
-                           <% if (bot.booster.has(user.id)) { %>                       
+                           <% if (bot.booster.has(user.id)) { %>                 
                          <% if(bannerURL) { %> 
                             <div data-v-49d9514b="" class="banner rounded-t-lg bg-purple-900"><img data-v-49d9514b="" src="<%= bannerURL %>" class="w-full h-full" style="object-fit: cover;"></div>
+                             <% } else { %>
+         <div data-v-49d9514b="" class="banner rounded-t-lg bg-purple-900"></div>
                              <% } %>
-                             <% } %>
+                             <% } else { %>
                              <div data-v-49d9514b="" class="banner rounded-t-lg bg-purple-900"></div>
-                             
+                             <% } %>
                           
                            <div data-v-49d9514b="" class="bg-card rounded-b-lg pt-16">
                               <br>

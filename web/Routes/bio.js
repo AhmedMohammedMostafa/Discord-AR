@@ -69,7 +69,7 @@ app.post("/check-image", checkAuth, async (req, res) => {
 
 if(!db.get(`user_${user.id}.isUser`)) return res.redirect("/")
 
-    let bannerURL = db.get(`bannerURL_${user.id}`);
+    let bannerURL = db.get(`user_${user.id}.bannerURL`);
     
         if (req.session.user && req.session.user.id == id) return res.redirect("/me");
         let bots = [];
@@ -124,7 +124,7 @@ customStatus = status[0]
         }
 
         if(!bioUsers) return res.redirect("/me/create");
-let bannerURL = db.get(`bannerURL_${user.id}`);
+    let bannerURL = db.get(`user_${user.id}.bannerURL`);
 
 
         res.render("me/me", {
@@ -162,8 +162,7 @@ let bannerURL = db.get(`bannerURL_${user.id}`);
     }
 
     if(!bioUsers) return res.redirect("/me/create");
-
-    let bannerURL = db.get(`bannerURL_${user.id}`);
+    let bannerURL = db.get(`user_${user.id}.bannerURL`);
         res.render("me/edit", {
             user: user,
             bot: client,
@@ -187,7 +186,7 @@ let bannerURL = db.get(`bannerURL_${user.id}`);
             haveBio = true
         }
 
-    let bannerURL = db.get(`bannerURL_${user.id}`);
+    let bannerURL = db.get(`user_${user.id}.bannerURL`);
     
       
         if (!user.flags) await user.fetchFlags();

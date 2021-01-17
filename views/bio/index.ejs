@@ -181,7 +181,7 @@
                 <img src="<%= bot.users.cache.get(tb.id).displayAvatarURL({dynamic : true}) %>" alt="image" class="card-imge" draggable="false">
                 <h5 class="card-title"><%= bot.users.cache.get(tb.id).tag %>    -   <i id='likeHeart' class="fas fa-heart"></i>  <%= bot.db.fetch(`user_${tb.id}.likes`) || '0' %>   </h5>
                 <p class="card-text"><%= bot.db.fetch(`user_${tb.id}.bio`) || ' ' %></p>
-                <p class="card-text"><i id='likeHeart' class="fas fa-heart fa-2x"></i> <%= bot.db.fetch(`user_${tb.id}.likes`) || '0' %></p>
+
                     <a href="/p/<%= tb.id %>" class="btn btn-success rounded">View</a>
                 </div>
         </div>

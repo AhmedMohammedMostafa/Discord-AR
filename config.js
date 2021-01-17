@@ -10,12 +10,14 @@ module.exports = {
     },
     roles: {
         developer: "766759656885714995",
-        bots: "766759696714432558"
+        bots: "766759696714432558",
+        booster: "766759696714432558",
+        premium: "766759697088512000"
     },
     permission: "MANAGE_GUILD",
     prefix: "-",
     website: {
-        redirectURI: "http://localhost:3000/authorize/callback",
+        redirectURI:"https://discord-ar.ahmedmostafa8.repl.co/authorize/callback",
         clientSecret: "G77PDkWMimcK8jIOeFlNv363hhAInW9l",
         scopes: ["identify"],
         clientID: "768556981820457051"
